@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>น่ารักแกลเลอรี 💖</title>
+    <link rel="stylesheet" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+</head>
+<body>
+
+    <div class="floating-hearts"></div> <!-- หัวใจลอยพื้นหลัง -->
+
+    <div class="passcode-container">
+        <h2>🔒 Enter Passcode</h2>
+        <input type="password" id="password" disabled>
+        <div class="keypad">
+            <button onclick="enterNumber(1)">1</button>
+            <button onclick="enterNumber(2)">2</button>
+            <button onclick="enterNumber(3)">3</button>
+            <button onclick="enterNumber(4)">4</button>
+            <button onclick="enterNumber(5)">5</button>
+            <button onclick="enterNumber(6)">6</button>
+            <button onclick="enterNumber(7)">7</button>
+            <button onclick="enterNumber(8)">8</button>
+            <button onclick="enterNumber(9)">9</button>
+            <button onclick="clearPass()">⌫</button>
+            <button onclick="enterNumber(0)">0</button>
+            <button onclick="checkPassword()">✔</button>
+        </div>
+        <p id="error-message" style="color: red; display: none;">รหัสผ่านไม่ถูกต้อง!</p>
+    </div>
+
+    <div class="music-player">
+        <p>🎵 Pls, play this song!</p>
+        <audio controls>
+            <source src="g.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+
+    <!-- แกลเลอรี ซ่อนไว้จนกว่าจะกรอกรหัสผ่านถูก -->
+    <div id="gallery-container" class="gallery-container" style="display: none;">
+        <div class="image-card"><img src="v.jpg" alt="ภาพที่ 1"></div>
+        <div class="image-card"><img src="s.jpg" alt="ภาพที่ 2"></div>
+        <div class="image-card"><img src="x.jpg" alt="ภาพที่ 3"></div>
+    </div>
+
+    <script>
+        let inputPass = "";
+
+        function enterNumber(num) {
+            if (inputPass.length < 4) {
+                inputPass += num;
+                document.getElementById('password').value = "*".repeat(inputPass.length);
+            }
+        }
+
+        function clearPass() {
+            inputPass = "";
+            document.getElementById('password').value = "";
+        }
+
+        function checkPassword() {
+            const correctPassword = "1234";
+            if (inputPass === correctPassword) {
+                document.querySelector(".passcode-container").style.display = "none";
+                document.getElementById('gallery-container').style.display = "flex";
+            } else {
+                document.getElementById('error-message').style.display = "block";
+                clearPass();
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const heartContainer = document.querySelector(".floating-hearts");
+            for (let i = 0; i < 30; i++) {
+                let heart = document.createElement("div");
+                heart.classList.add("heart");
+                heart.style.left = Math.random() * 100 + "vw";
+                heart.style.animationDuration = Math.random() * 5 + 5 + "s";
+                heart.innerHTML = "❤️";
+                heartContainer.appendChild(heart);
+            }
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+html, body {
+    width: 100%;
+    height: auto;
+    min-height: 100vh;
+    overflow-x: hidden; /* ห้ามเลื่อนซ้ายขวา */
+    overflow-y: auto; /* ✅ อนุญาตให้เลื่อนขึ้นลง */
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(45deg, #ffdde1, #ee9ca7, #ffdde1);
+    background-size: 400% 400%;
+    animation: moveBackground 10s infinite alternate ease-in-out;
+    text-align: center;
+    margin: 0;
+    overflow: hidden;
+    color: rgb(255, 113, 198);
+}
+
+/* พื้นหลังไล่สี */
+@keyframes moveBackground {
+    0% { background-position: 0% 60%; }
+    100% { background-position: 100% 60%; }
+}
+
+/* 💖 ฟองน้ำหัวใจลอย */
+.floating-hearts {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.heart {
+    position: absolute;
+    font-size: 20px;
+    opacity: 0.7;
+    animation: floatUp 7s infinite ease-in-out;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0); opacity: 0.7; }
+    100% { transform: translateY(-100vh); opacity: 0; }
+}
+
+/* 🔒 กรอบรหัสผ่าน */
+.passcode-container {
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+    width: 300px;
+    padding: 20px;
+    border-radius: 20px;
+    margin: 50px auto;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.passcode-container h2 {
+    margin-bottom: 10px;
+}
+
+input {
+    width: 80%;
+    padding: 10px;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+}
+
+/* 🔢 ปุ่มตัวเลข */
+.keypad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.keypad button {
+    width: 60px;
+    height: 60px;
+    font-size: 20px;
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+    background: #ff85a2;
+    color: white;
+    transition: 0.3s;
+}
+
+.keypad button:hover {
+    background: #ff577f;
+}
+
+/* 🎵 เครื่องเล่นเพลง */
+.music-player {
+    margin-top: 20px;
+    background: rgba(255, 255, 255, 0.5);
+    padding: 10px;
+    border-radius: 15px;
+    display: inline-block;
+}
+
+/* 🎨 แกลเลอรี */
+.gallery-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.image-card {
+    background: rgba(255, 255, 255, 0.3);
+    padding: 10px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.image-card img {
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+}
+/* ✅ ตั้งค่าพื้นฐาน */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(45deg, #ffdde1, #ee9ca7, #ffdde1);
+    text-align: center;
+    margin: 0;
+    color: rgb(255, 113, 198);
+}
+
+/* ✅ ปรับขนาดของคีย์แพดให้พอดีกับหน้าจอ */
+.keypad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    width: 250px;
+    margin: auto;
+}
+
+.keypad button {
+    transition: all 0.2s ease-in-out;
+}
+
+.keypad button:active {
+    transform: scale(0.9); /* เอฟเฟกต์กดปุ่ม */
+}
+
+.image-card img:hover {
+    transform: scale(1.1); /* ซูมเข้าเล็กน้อยเมื่อเอาเมาส์ชี้ */
+}
+
+
+.keypad button:hover {
+    background: #ffb6c1;
+}
+
+/* ✅ ปรับรูปแบบเมื่อใช้งานบนแท็บเล็ต (ขนาดหน้าจอ 600px ขึ้นไป) */
+@media (min-width: 600px) {
+    .keypad {
+        width: 300px;
+    }
+}
+
+/* ✅ ปรับรูปแบบเมื่อใช้งานบนคอมพิวเตอร์ (ขนาดหน้าจอ 1024px ขึ้นไป) */
+@media (min-width: 1024px) {
+    .keypad {
+        width: 350px;
+    }
+
+    .keypad button {
+        font-size: 2rem;
+    }
+}
+/* ✅ ให้รูปภาพปรับขนาดตามหน้าจอ */
+.image-card img {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+    border-radius: 15px;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* ✅ ทำให้แกลเลอรีเรียงแถวใหม่เมื่อเป็นมือถือ */
+.gallery-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* ปรับขนาดภาพให้พอดีในมือถือ */
+@media (max-width: 480px) {
+    .image-card img {
+        max-width: 150px;
+    }
+}
+/* ✅ ปรับขนาดคีย์แพดให้พอดีกับหน้าจอ */
+@media (max-width: 600px) {
+    .keypad {
+        width: 90%; /* ปรับขนาดอัตโนมัติ */
+    }
+}
+
+/* ✅ ปรับแกลเลอรีให้เป็นแนวตั้งเมื่ออยู่บนมือถือ */
+@media (max-width: 480px) {
+    .gallery-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .image-card img {
+        max-width: 100px; /* ปรับให้เล็กลง */
+    }
+}
